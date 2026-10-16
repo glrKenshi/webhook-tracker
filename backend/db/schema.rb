@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_16_023436) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_16_024640) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -35,5 +35,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_16_023436) do
     t.index ["user_id"], name: "index_webhook_endpoints_on_user_id"
   end
 
+  create_table "webhook_events", force: :cascade do |t|
+    t.integer "webhook_endpoint_id", null: false
+    t.string "http_method"
+    t.text "headers"
+    t.text "body"
+    t.string "content_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["webhook_endpoint_id"], name: "index_webhook_events_on_webhook_endpoint_id"
+  end
+
   add_foreign_key "webhook_endpoints", "users"
+  add_foreign_key "webhook_events", "webhook_endpoints"
 end
