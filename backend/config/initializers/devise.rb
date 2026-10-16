@@ -26,17 +26,15 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
+  config.navigational_formats = []
+
   config.responder.error_status = :unprocessable_content
 
   config.responder.redirect_status = :see_other
 
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.fetch(:devise_jwt_secret_key)
-  
+
     jwt.expiration_time = 1.hour.to_i
-  
-    jwt.request_formats = {
-      user: [:json]
-    }
   end
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  webhook_endpoint: one
+  http_method: MyString
+  headers: MyText
+  body: MyText
+  content_type: MyString
+
+two:
+  webhook_endpoint: two
+  http_method: MyString
+  headers: MyText
+  body: MyText
+  content_type: MyString
